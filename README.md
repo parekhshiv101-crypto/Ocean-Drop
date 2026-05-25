@@ -1,20 +1,27 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Jumpboy - Desktop Game
 
-# Run and deploy your AI Studio app
+This is the desktop version of Jumpboy. It uses **Electron** to run as a standalone Windows application.
 
-This contains everything you need to run your app locally.
+## How to create the .exe file
 
-View your app in AI Studio: https://ai.studio/apps/e48e7403-4cdc-4908-9e81-7f4fc1d58df6
+Once you have downloaded this folder as a ZIP or cloned it from GitHub:
 
-## Run Locally
+1.  **Install Node.js**: Make sure you have Node.js installed on your computer.
+2.  **Open a Terminal**: Open Windows PowerShell or Command Prompt inside this folder.
+3.  **Install Dependencies**: Run the following command and wait for it to finish:
+    ```bash
+    npm install
+    ```
+4.  **Build the .exe**: Run this command to create your game executable:
+    ```bash
+    npm run electron:build
+    ```
 
-**Prerequisites:**  Node.js
+After it finishes, you will find a new folder named `dist-electron` which contains your **Jumpboy.exe** file!
 
+## How to play in development mode
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+If you want to run the app in a window without building the .exe first:
+```bash
+npm run electron:dev
+```
