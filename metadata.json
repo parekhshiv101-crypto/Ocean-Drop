@@ -1,0 +1,6 @@
+{
+  "name": "Jumpboy",
+  "description": "An infinite jump scrolling game, progressing to get the highest score as you can. See if you can come out on top.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

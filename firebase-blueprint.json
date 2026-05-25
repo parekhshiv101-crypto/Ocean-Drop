@@ -1,0 +1,41 @@
+{
+  "entities": {
+    "LeaderboardEntry": {
+      "title": "Leaderboard Entry",
+      "description": "Represents a user's high score on the leaderboard.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The Firebase Auth UID of the user."
+        },
+        "displayName": {
+          "type": "string",
+          "description": "The chosen display name for the user."
+        },
+        "score": {
+          "type": "number",
+          "description": "The user's highest score."
+        },
+        "maxHeight": {
+          "type": "number",
+          "description": "The user's highest altitude reached."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The server timestamp when the score was recorded."
+        }
+      },
+      "required": ["userId", "displayName", "score", "maxHeight", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/leaderboard/{userId}": {
+      "schema": {
+        "$ref": "#/entities/LeaderboardEntry"
+      },
+      "description": "Global leaderboard containing user high scores."
+    }
+  }
+}
