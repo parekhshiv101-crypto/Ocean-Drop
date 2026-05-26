@@ -1,8 +1,21 @@
-# Jumpboy - Desktop Game
+# Jumpboy - Infinite Jump Game
 
-This is the desktop version of Jumpboy. It uses **Electron** to run as a standalone Windows application.
+This project contains Jumpboy, an infinite scrolling jump game.
 
-## How to create the .exe file
+## 🚀 Quick Play (No Setup Required)
+
+If you downloaded this as a ZIP:
+1.  Locate the **Jumpboy.html** file in this folder.
+2.  Double-click it to open it in your web browser.
+3.  **Play!** No installation or internet connection is required.
+
+---
+
+## 💻 Desktop Version (.exe)
+
+This project also supports building a standalone Windows application using **Electron**.
+
+### How to create the .exe file
 
 Once you have downloaded this folder as a ZIP or cloned it from GitHub:
 
