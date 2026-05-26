@@ -38,12 +38,12 @@ function handleFirestoreError(error: unknown, operationType: OperationType, path
   const errInfo: FirestoreErrorInfo = {
     error: error instanceof Error ? error.message : String(error),
     authInfo: {
-      userId: auth.currentUser?.uid,
-      email: auth.currentUser?.email,
-      emailVerified: auth.currentUser?.emailVerified,
-      isAnonymous: auth.currentUser?.isAnonymous,
-      tenantId: auth.currentUser?.tenantId,
-      providerInfo: auth.currentUser?.providerData?.map(provider => ({
+      userId: auth?.currentUser?.uid,
+      email: auth?.currentUser?.email,
+      emailVerified: auth?.currentUser?.emailVerified,
+      isAnonymous: auth?.currentUser?.isAnonymous,
+      tenantId: auth?.currentUser?.tenantId,
+      providerInfo: auth?.currentUser?.providerData?.map(provider => ({
         providerId: provider.providerId,
         email: provider.email,
       })) || []
@@ -60,6 +60,10 @@ export function useLeaderboard() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!db) {
+      setLoading(false);
+      return;
+    }
     const q = query(collection(db, 'leaderboard'), orderBy('score', 'desc'), limit(10));
     
     const unsubscribe = onSnapshot(q, (snapshot) => {
@@ -77,7 +81,7 @@ export function useLeaderboard() {
   }, []);
 
   const submitScore = async (displayName: string, score: number, maxHeight: number) => {
-    if (!auth.currentUser || !auth.currentUser.emailVerified) return;
+    if (!auth || !db || !auth.currentUser || !auth.currentUser.emailVerified) return;
     
     const docRef = doc(db, 'leaderboard', auth.currentUser.uid);
     try {

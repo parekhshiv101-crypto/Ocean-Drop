@@ -6,7 +6,7 @@
   "main": "electron-main.cjs",
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
-    "build": "vite build && cp dist/index.html Jumpboy.html",
+    "build": "vite build && node -e \"const fs = require('fs'); let html = fs.readFileSync('dist/index.html', 'utf8'); html = html.replace(/<script type=\\\"module\\\" crossorigin>/g, '<script type=\\\"module\\\">'); fs.writeFileSync('Jumpboy.html', html);\"",
     "preview": "vite preview",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit",

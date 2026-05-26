@@ -38,6 +38,7 @@ export default function App() {
 
   // Listen to auth state
   useEffect(() => {
+    if (!auth) return;
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       if (currentUser && currentUser.displayName && localStorage.getItem('playerName') === null) {
